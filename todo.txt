@@ -1,0 +1,17 @@
+
+- open in vs code
+- npm init -y
+- necessary package install
+   (npm i express mongoose cors helmet xss-clean express-rate-limit cookie-parser dotenv)
+- necessary dev package
+   (npm i -D nodemon)
+
+- Project Folder Structure
+  $folders = "controllers", "middlewares", "models", "routes", "config", "services", "utils"
+foreach ($folder in $folders) {
+    New-Item -ItemType Directory -Path "src\$folder" -Force
+}
+
+- security 
+npm i express-mongo-sanitize
+npm i hpp
