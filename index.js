@@ -14,4 +14,3 @@ mongoose.connect(MONGO_URL).then(() => {
   console.error("Error connecting to MongoDB:", error);
 });
 
-// 1.11 hr
