@@ -14,9 +14,11 @@ const productSchema = new mongoose.Schema(
     image:{type:String,require:true},
     stock:{type:String,require:true},
     remark:{type:String,require:true},
-    categoryId:{type:mongoose.Schema.Types.ObjectId, required:true,ref:"categories"},
+    categoryId:{type:mongoose.Schema.Types.ObjectId, required:true,
+      // ref:"categories"
+    },
     brandId:{type:mongoose.Schema.Types.ObjectId, required:true,
-      ref:"brands"
+      // ref:"brands"
     },
   },
   {

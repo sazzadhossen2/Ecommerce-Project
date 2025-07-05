@@ -23,7 +23,7 @@ timeseries:true,
 versionKey:false,  
 }
 );
-const ProductSliderModel =mongoose.model("productslider",productSliderSchema);
+const ProductSliderModel =mongoose.model("productsliders",productSliderSchema);
 
 export default ProductSliderModel;
 
