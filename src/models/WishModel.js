@@ -8,9 +8,9 @@ const wishesSchema = new mongoose.Schema(
     productId:{type:mongoose.Schema.Types.ObjectId, required:true},
   
   },
-  {
-timeseries:true,
-versionKey:false,  
+ {
+  timestamps: true,
+  versionKey: false
 }
 );
 const WishesModel =mongoose.model("wishes",wishesSchema);

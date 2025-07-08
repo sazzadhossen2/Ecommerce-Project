@@ -21,6 +21,6 @@ timeseries:true,
 versionKey:false,  
 }
 );
-const InvoiceModel =mongoose.model("invoice",InvoiceSchema);
+const InvoiceModel =mongoose.model("invoices",InvoiceSchema);
 
 export default InvoiceModel;

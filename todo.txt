@@ -15,3 +15,6 @@ foreach ($folder in $folders) {
 - security 
 npm i express-mongo-sanitize
 npm i hpp
+
+- Email
+npm i nodemailer jsonwebtoken

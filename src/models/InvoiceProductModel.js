@@ -19,6 +19,6 @@ timeseries:true,
 versionKey:false,  
 }
 );
-const InvoiceProductModel =mongoose.model("invoiceProduct",invoiceProductSchema);
+const InvoiceProductModel =mongoose.model("invoiceproducts",invoiceProductSchema);
 
 export default InvoiceProductModel;
