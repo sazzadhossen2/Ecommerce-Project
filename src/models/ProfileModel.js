@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 const ProfileSchema = new mongoose.Schema(
   {
 
-    userId:{type:mongoose.Schema.Types.ObjectId, required:true},
+    userID:{type:mongoose.Schema.Types.ObjectId, required:true},
     cus_add:{type:String},
     cus_city:{type:String},
     cus_state:{type:String},

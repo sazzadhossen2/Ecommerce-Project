@@ -5,10 +5,10 @@ import mongoose from "mongoose";
 
 const invoiceProductSchema = new mongoose.Schema(
   {
-    userId:{type:mongoose.Schema.Types.ObjectId, required:true},
-    productId:{type:mongoose.Schema.Types.ObjectId, required:true},
-    invoiceId:{type:mongoose.Schema.Types.ObjectId, required:true}, 
-
+    userID:{type:mongoose.Schema.Types.ObjectId, required:true},
+    productID:{type:mongoose.Schema.Types.ObjectId, required:true},
+    invoiceID:{type:mongoose.Schema.Types.ObjectId, required:true}, 
+    price:{type:String,required:true},
     qty:{type:String,require:true},
     size:{type:String,require:true}, 
     color:{type:String,require:true},

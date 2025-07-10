@@ -9,7 +9,8 @@ import { CartList, RemoveCartList, SaveCartList, UpdateCartList } from "../contr
 // import { CreateInvoice, InvoiceList } from "../controllers/InvoiceController.js";
 import { FeatureListController, LegalDetailsController } from "../controllers/FeatureController.js";
 
-import { InvoiceList } from "../controllers/InvoiceController.js";
+import { CreateInvoice, InvoiceList, InvoiceProductList, PaymentCancel, PaymentFail, PaymentIPN, PaymentSuccess } from "../controllers/InvoiceController.js";
+// import { CreateInvoice } from "../controllers/InvoiceController.js";
 
 const router = express.Router();
 
@@ -62,8 +63,15 @@ router.get("/legal/:type", LegalDetailsController);
 
 
 // Invoice & Payment
-// router.get("/CreateInvoice", AuthVerification, CreateInvoice);
+router.get("/CreateInvoice", AuthVerification, CreateInvoice);
 router.get("/InvoiceList", AuthVerification, InvoiceList);
+router.get("/InvoiceProductList/:invoice_id",AuthVerification,InvoiceProductList)
+
+
+router.post('/PaymentSuccess/:trxID',PaymentSuccess)
+router.post('/PaymentCancel/:trxID',PaymentCancel)
+router.post('/PaymentFail/:trxID',PaymentFail)
+router.post('/PaymentIPN/:trxID',PaymentIPN)
 
 
 export default router;
