@@ -7,7 +7,7 @@ import CartModel from "../models/CartModel.js";
 import ProfileModel from "../models/ProfileModel.js";
 import InvoiceModel from "../models/InvoiceModel.js";
 import InvoiceProductModel from "../models/InvoiceProductModel.js";
-import PaymentSettingModel from "../models/PaymentSettingModel.js";
+import PaymentSettingModel from "../models/paymentSettingModel.js";
 
 const ObjectID = mongoose.Types.ObjectId;
 
