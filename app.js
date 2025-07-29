@@ -1,10 +1,10 @@
 
 import cookieParser from "cookie-parser";
 import express from "express";
-// import mongoSanitize from "express-mongo-sanitize";
+import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
 import cors from "cors";
-// import xss from "xss-clean";
+import xss from "xss-clean";
 import hpp from "hpp";
 import rateLimit from "express-rate-limit"; 
 import router from "./src/routes/api.js";
@@ -16,9 +16,9 @@ const app = express();
 // Security Middleware
 app.use(cookieParser());
 app.use(helmet());
-// app.use(mongoSanitize());
+app.use(mongoSanitize());
 app.use(cors());
-// app.use(xss());
+app.use(xss());
 app.use(hpp())
 
 
@@ -44,6 +44,13 @@ app.get('/ProductBrandList', (req, res) => {
 
 app.use('/api/v1',router)
 
+app.use(express.static('client-side/dist'));
+app.get('*', (req, res) => {
+  res.sendFile(Path.resolve(__dirname,'client-side', 'dist', 'index.html'));
+});
 
 export default app;
+
+
+// 1.31?
 

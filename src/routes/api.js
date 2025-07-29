@@ -23,7 +23,7 @@ router.get('/productBrandListById/:brandID',ProductBrandListById)
 router.get('/productByCategoryList/:categoryID',ProductByCategoryList) ;
 router.get('/productListBySmiler/:categoryID',ProductListBySmiler)
 router.get('/productListByKeyWord/:keyWord',ProductListByKeyWord) ;
-router.get('/productListByRemark/:Remaek',ProductListByRemark) ;
+router.get('/productListByRemark/:Remark',ProductListByRemark) ;
 router.get('/productDetails/:productID',ProductDetails) ;
 router.post('/ProductListByFilter',ProductListByFilter)
 
@@ -44,7 +44,7 @@ router.put('/UpdateProfile',AuthVerification,UpdateProfile);
 
 
 
-// //Wish List
+//Wish List
 router.post('/SaveWishList',AuthVerification,SaveWishList);
 router.delete('/RemoveWishList',AuthVerification,RemoveWishList);
 router.get('/WishList',AuthVerification,WishList);

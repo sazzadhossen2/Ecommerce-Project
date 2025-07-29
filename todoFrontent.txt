@@ -1,0 +1,21 @@
+create project--
+npm create vite@latest
+
+every new update----
+npm run build
+
+Frontend Install packages:------
+axios  
+bootstrap  
+bootstrap-icons  
+react-bootstrap  
+html-react-parser  
+js-cookie  
+lottie-react  
+react-hot-toast  
+react-image-gallery  
+react-loading-skeleton  
+react-router-dom  
+react-star-ratings  
+sweetalert2  
+zustand

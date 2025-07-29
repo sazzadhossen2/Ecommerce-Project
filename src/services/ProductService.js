@@ -297,8 +297,8 @@ export const LisByRemarkService= async(req)=>{
 
   try{
   
-let Remaek = req.params.Remaek;
-  let matchStage = {$match:{remark:Remaek}};
+let Remark = req.params.Remark;
+  let matchStage = {$match:{remark:Remark}};
 
     const joinWithBrandStage ={
       $lookup:{
@@ -343,7 +343,7 @@ let Remaek = req.params.Remaek;
   }catch(e){
     return {
       message: "Error in fetching product by category ID",
-      data: e.message // ✅ show only the error message
+      data: e.message 
     };
   }
 }
