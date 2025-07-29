@@ -45,9 +45,9 @@ app.get('/ProductBrandList', (req, res) => {
 app.use('/api/v1',router)
 
 app.use(express.static('client-side/dist'));
-app.get('*', (req, res) => {
-  res.sendFile(Path.resolve(__dirname,'client-side', 'dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(Path.resolve(__dirname,'client-side', 'dist', 'index.html'));
+// });
 
 export default app;
 
