@@ -11,7 +11,7 @@ export const BrandListService = async()=>{
     const data = await BrandModel.find();
     return ({
     
-      message: "Success Brand List",
+      message: "success",
       data: data,
     });
   
@@ -32,7 +32,7 @@ export const CategoryListService = async()=>{
     const data = await CategoryModel.find();
     return ({
     
-      message: "Success Brand List",
+     message: "success",
       data: data,
     });
   
@@ -51,7 +51,7 @@ export const SliderListService = async () => {
   try {
     const data = await ProductSliderModel.find();
     return {
-      message: "Success Slider List",
+      message: "success",
       data: data,
     };
   } catch (e) {
@@ -110,7 +110,7 @@ export const ProductListByIdService = async (req) => {
     ]);
 
     return {
-      message: "Success Product List by Brand ID",
+      message: "success",
       data: data,
     };
 
@@ -164,7 +164,7 @@ export const ProductListByCategoryService= async(req)=>{
       projectStage,
     ]);
     return {
-      message: "Success Product List by Category ID",
+      message: "success",
       data: data,
     };
 
@@ -221,7 +221,7 @@ export const ListBySimilarSerice= async(req)=>{
       projectStage,
     ]);
     return {
-      message: "Success Product List by Category ID",
+      message: "success",
       data: data,
     };
 
@@ -280,7 +280,7 @@ export const ListByKeyWordService= async(req)=>{
       projectStage,
     ]);
     return {
-      message: "Success Product List by Category ID",
+      message: "success",
       data: data,
     };
 
@@ -336,7 +336,7 @@ let Remark = req.params.Remark;
       projectStage,
     ]);
     return {
-      message: "Success Product List by Category ID",
+      message: "success",
       data: data,
     };
 
@@ -406,7 +406,7 @@ export const ProductDetailsService = async (req) => {
     ]);
 
     return {
-      message: "Success Product List by Brand ID",
+     message: "success",
       data: data,
     };
 

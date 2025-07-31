@@ -31,10 +31,9 @@ ListByRemarkRequest,
 
  <Slider/>
   <Products/>
- <Features/>
  <Categories/>
  <Brands/>
- 
+  <Features/>
   </Layout>
 }
 

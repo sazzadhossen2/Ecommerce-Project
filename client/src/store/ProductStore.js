@@ -6,7 +6,7 @@ const ProductStore =create((set)=>(
     BrandList:null,
     BrandListRequest:async()=>{
       let res =await axios.get('/api/v1/productBrandList');
-      if(res.data['status'] === 'success'){
+      if(res.data['message'] === 'success'){
         set({BrandList:res.data['data']});  
     }
   },
@@ -31,8 +31,16 @@ const ProductStore =create((set)=>(
    ListByRemark:null,
     ListByRemarkRequest:async(remark)=>{
       let res =await axios.get(`/api/v1/productListByRemark/${remark}`);
-      if(res.data['status'] === 'success'){
+      if(res.data['message'] === 'success'){
         set({ListByRemark:res.data['data']});  
+    }
+  },
+
+  ListByBrand: null,
+  ListByBrandRequest: async (BrandId) => {
+    let res = await axios.get(`/api/v1/productBrandListById/${BrandId}`);
+    if (res.data['message'] === 'success') {
+      set({ ListByBrand: res.data['data'] });
     }
   },
 
