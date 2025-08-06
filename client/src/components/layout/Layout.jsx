@@ -2,6 +2,8 @@ import React from 'react'
 
 import Footer from './Footer'
 import NavBar from '../layout/NavBar'
+import { Toaster } from 'react-hot-toast'
+
 
 
 function Layout({children}) {
@@ -10,6 +12,7 @@ function Layout({children}) {
    
    <NavBar/>
 {children}
+<Toaster position='top-center'></Toaster>
    <Footer/>
     
     </>

@@ -112,9 +112,9 @@ sticky-top bg-white navbar-expand-lg navbar-light py-3"
             <Link
               type="button"
               className="btn ms-3 btn-success d-flex"
-              to="/profile"
+              to="/login"
             >
-              Logout
+              Login
             </Link>
           </div>
         </div>
