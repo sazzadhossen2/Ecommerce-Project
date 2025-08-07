@@ -34,10 +34,9 @@ router.get("/ProductReviewList/:ProductID", ProductReviewList);
 // User
 router.get('/UserOTP/:email',UserOTP);
 router.get('/VerifyLogin/:email/:otp',VerifyOTP);
-router.get('/UserLogout',AuthVerification,UserLgout);
+router.get('/UserLogout',UserLgout);
 
 //Profile
-
 router.post('/CreateProfile',AuthVerification,CreateProfile);
 router.get('/ReadProfile',AuthVerification,ReadProfile);
 router.put('/UpdateProfile',AuthVerification,UpdateProfile);

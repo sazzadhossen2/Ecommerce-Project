@@ -6,9 +6,7 @@ function UserSubmitButton(props) {
   if(isFormSubmit===false){
 return <button onClick={props.onClick} type='submit' className={props.className}>{props.text}</button>
   }else{
-return <button onClick={props.onClick} type='submit' className={props.className}><div className='spinner-border spinner-border-sm'>
-  Processing...
-  </div></button>
+return <button onClick={props.onClick} type='submit' className={props.className}><div className='spinner-border spinner-border-sm'></div> Processing...</button>
   }
  
 }

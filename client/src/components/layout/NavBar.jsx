@@ -1,7 +1,17 @@
 
 import { Link } from 'react-router-dom'
 import logo from "../../assets/images/plainb-logo.svg";
+
+import UserStore from '../../store/UserStore.js';
+import UserSubmitButton from '../user/UserSubmitButton.jsx';
 function NavBar() {
+  const {isLogin,UserLogoutRequest}=UserStore()
+  const onLogout=async()=>{
+ await UserLogoutRequest();
+ sessionStorage.clear();
+ localStorage.clear();
+  window.location.href="/";
+  }
   return (
     <>
       <div className="container-fluid text-white p-2 bg-success">
@@ -109,13 +119,25 @@ sticky-top bg-white navbar-expand-lg navbar-light py-3"
             >
               Profile
             </Link>
-            <Link
+            {
+              isLogin()? (
+              <UserSubmitButton 
+              onClick={onLogout}
+              text="Logout"
+              className="btn ms-3 btn-success d-flex"
+              />
+              )
+            : (
+              <Link
               type="button"
               className="btn ms-3 btn-success d-flex"
               to="/login"
             >
               Login
             </Link>
+            )
+            }
+           
           </div>
         </div>
       </nav>

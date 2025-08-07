@@ -1,17 +1,18 @@
 import toast from 'react-hot-toast'
-import UserSubmitButton from './UserSubmitButton'
+import UserSubmitButton from './UserSubmitButton.jsx'
 import UserStore from '../../store/UserStore.js'
 import ValidationHelper from '../../utility/ValidationHelper.js'
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 function Loginform() {
-
+ const navigate = useNavigate();
   const {LoginFormData,LoginFormOnChange,UserOTPRequest}=UserStore();
   const onFormSubmit=async()=>{
     if(!ValidationHelper.IsEmail(LoginFormData.email)){
       toast.error('Please enter a valid email address');
     }else{
 let res =await UserOTPRequest(LoginFormData.email);
-res?Navigate("/otp"):toast.error("Something went wrong, please try again later");
+res?navigate("/otp"):toast.error("Something went wrong, please try again later");
     }
   }
   return (
@@ -38,7 +39,6 @@ className="btn mt-3 btn-success" text="Next"/>
   )
 }
 
-export default Loginform
+export default Loginform;
 
 
-// 1.10
