@@ -91,7 +91,7 @@ export const ReadProfileService =async(req)=>{
  try{
 
    const user_id = req.headers["user_id"]; 
-   const result = await ProfileModel.find({userId:user_id});
+   const result = await ProfileModel.find({userID:user_id});
    return {status:"Success",data:result}
   }catch(e){
 return {status:"false", data:e.toString()}

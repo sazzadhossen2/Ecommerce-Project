@@ -30,7 +30,7 @@ timeseries:true,
 versionKey:false,  
 }
 );
-const ProfileModel =mongoose.model("profile",ProfileSchema);
+const ProfileModel =mongoose.model("profiles",ProfileSchema);
 
 export default ProfileModel;
 

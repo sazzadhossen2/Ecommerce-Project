@@ -7,6 +7,7 @@ import { getEmail, setEmail } from "../utility/utility.js";
   isLogin:()=>{
     return !! Cookies.get("token");
   },
+  
 isFormSubmit:false,
 LoginFormData:{email:""},
 LoginFormOnChange:(name,value)=>{

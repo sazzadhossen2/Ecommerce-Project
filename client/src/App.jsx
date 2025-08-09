@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import ProductByBrand from "./pages/ProductByBrand"
 import LoginPage from "./pages/LoginPage"
 import OtpPage from "./pages/OtpPage"
+import ProfileScreen from "./pages/ProfileScreen"
 function App() {
 
 
@@ -13,6 +14,7 @@ function App() {
     <Route path="/by-brand/:id" element={<ProductByBrand />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/otp" element={<OtpPage />} />
+    <Route path="/profile" element={<ProfileScreen />} />
     {/* Add more routes as needed */}
   </Routes>
   </BrowserRouter>
