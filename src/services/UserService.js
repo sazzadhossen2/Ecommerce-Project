@@ -72,10 +72,10 @@ export const SaveProfileService =async(req)=>{
   
      const user_id = req.headers["user_id"]; 
     const reqBody = req.body;
-    reqBody.userId = user_id; 
+    reqBody.userID = user_id; 
 
     await ProfileModel.updateOne(
-      { userId: user_id },
+      { userID: user_id },
       { $set: reqBody },
       { upsert: true }
     );
