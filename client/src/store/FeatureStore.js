@@ -6,7 +6,8 @@ const FeatureStore =create((set)=>(
     FeatureList:null,
     FeatureListRequest:async()=>{
       let res =await axios.get('/api/v1/features');
-      if(res.data['status'] === 'success'){
+      console.log('FeatureListResponse:', res.data);
+      if(res.data['status'] === 'Success'){
         set({FeatureList:res.data['data']});  
     }
   },

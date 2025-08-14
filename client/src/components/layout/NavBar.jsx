@@ -4,8 +4,10 @@ import logo from "../../assets/images/plainb-logo.svg";
 
 import UserStore from '../../store/UserStore.js';
 import UserSubmitButton from '../user/UserSubmitButton.jsx';
+import CartStore from '../../store/CartStore.js';
 function NavBar() {
   const {isLogin,UserLogoutRequest}=UserStore()
+  const {cartAbilable}=CartStore();
   const onLogout=async()=>{
  await UserLogoutRequest();
  sessionStorage.clear();
@@ -92,26 +94,51 @@ sticky-top bg-white navbar-expand-lg navbar-light py-3"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0
-7 7 0 0114 0z"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 07 7 0 0114 0z"
                   />
                 </svg>
               </button>
             </div>
-            <Link
+
+         {   cartAbilable()?( <Link
               to="/cart"
               type="button"
               className="btn ms-2 btn-light position-relative"
             >
               <i className="bi text-dark bi-bag"></i>
+            </Link>):(
+              <Link
+              to="/login"
+              type="button"
+              className="btn ms-2 btn-light position-relative"
+            >
+              <i className="bi text-dark bi-bag"></i>
             </Link>
+            )}
+
+           {
+            cartAbilable()?(
+              
             <Link
-              to="/wish"
+              to="/wishList"
               type="button"
               className="btn ms-2 btn-light d-flex"
             >
               <i className="bi text-dark bi-heart"></i>
             </Link>
+            ):(
+              
+            <Link
+              to="/login"
+              type="button"
+              className="btn ms-2 btn-light d-flex"
+            >
+              <i className="bi text-dark bi-heart"></i>
+            </Link>
+            )
+           }
+
+
             <Link
               type="button"
               className="btn ms-3 btn-success d-flex"

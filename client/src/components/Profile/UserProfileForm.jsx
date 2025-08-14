@@ -1,100 +1,3 @@
-// import UserProfile from "../../store/UserProfile"
-
-
-
-// function UserProfiles() {
-//   const { 
-//      ProfileData,
-//     ProfileFormData: v,
-//     ProfileFormOnChnage,         // using your exact name
-//     ReadProfileRequest,
-//     CreateProfileRequest,
-//     UpdateProfileRequest
-
-//   }=UserProfile();
-  
-//   return (
-//     <div className="container mt-5">
-//  <div className="card p-5 rounded-3">
-//  <h6>Customer Details</h6>
-//  <hr />
-//  <div className="row mb-4">
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer Name </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer Phone </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer Fax </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer Country </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer City </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer State </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer Post Code </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Customer Address</label>
-// <input type="text" className="form-control " />
-//  </div>
-//  </div>
-//  <h6>Shipping Details</h6>
-//  <hr />
-//  <div className="row">
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping Name </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping Phone </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping Country </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping City </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping State </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping Post Code </label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  <div className="col-md-3 p-2">
-//  <label className="form-label">Shipping Address</label>
-//  <input type="text" className="form-control " />
-//  </div>
-//  </div>
-//  <div className="row mt-4">
-//  <div className="col-md-3 p-2">
-//  <button className="btn btn-success">Save</button>
-//  </div>
-//  </div>
-//  </div>
-//  </div>
-//   )
-// }
-
-// export default UserProfiles
 
 
 import { useEffect, useMemo, useState } from 'react';
@@ -102,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import UserStore from '../../store/UserStore.js';
-import UserProfile from '../../store/UserProfile.js'; // your zustand store (unchanged)
+import UserProfile from '../../store/UserProfile.js'; 
 
 function Row({ label, value }) {
   return (
@@ -150,16 +53,16 @@ export default function UserProfiles() {
     if (!ProfileData) return null;
     return Array.isArray(ProfileData) ? (ProfileData[0] || null) : ProfileData;
   }, [ProfileData]);
-  console.log('ProfileData:', ProfileData, 'Normalized:', data);
+ 
 
   // Helper to prefill form from payload
-  const prefillForm = (payload) => {
-    if (!payload) return;
+  const prefillForm = (data) => {
+    if (!data) return;
     const keys = [
       'cus_add','cus_city','cus_state','cus_country','cus_fax','cus_phone','cus_postcode','cus_name',
       'ship_add','ship_city','ship_state','ship_country','ship_phone','ship_postcode','ship_name'
     ];
-    keys.forEach(k => ProfileFormOnChange(k, payload[k] ?? ''));
+    keys.forEach(k => ProfileFormOnChange(k, data[k] ?? ''));
   };
 
   // If user clicks Edit/Create, prepare the form

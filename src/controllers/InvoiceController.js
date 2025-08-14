@@ -12,7 +12,7 @@ export const CreateInvoice = async (req, res) => {
 
 export const PaymentSuccess = async (req, res) => {
   await PaymentSuccessService(req);
-  return res.redirect("/orders");
+  return res.redirect("/profile");
 };
 
 export const PaymentFail = async (req, res) => {

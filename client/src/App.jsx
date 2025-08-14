@@ -5,6 +5,10 @@ import ProductByBrand from "./pages/ProductByBrand"
 import LoginPage from "./pages/LoginPage"
 import OtpPage from "./pages/OtpPage"
 import ProfileScreen from "./pages/ProfileScreen"
+import ProductDetailsPage from "./pages/ProductDetailsPage"
+import CartePage from "./pages/CartPage"
+import InvoicePage from "./pages/InvoicePage"
+import WishListPage from "./pages/WishListPage"
 function App() {
 
 
@@ -15,7 +19,11 @@ function App() {
     <Route path="/login" element={<LoginPage />} />
     <Route path="/otp" element={<OtpPage />} />
     <Route path="/profile" element={<ProfileScreen />} />
-    {/* Add more routes as needed */}
+    <Route path="/product-details/:id" element={<ProductDetailsPage />} />
+    <Route path="/cart" element={<CartePage />} />
+    <Route path="/payment" element={<InvoicePage/>}/>
+    <Route path="/wishList" element={<WishListPage/>} />
+    
   </Routes>
   </BrowserRouter>
 }

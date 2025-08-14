@@ -195,7 +195,7 @@ export const InvoiceProductListService = async (req) => {
     const invoice_id = new ObjectID(req.params.invoice_id);
     console.log(user_id);
     console.log(invoice_id);
-
+console.log("Fetching products for invoice:", invoice_id);
     const products = await InvoiceProductModel.aggregate([
       { $match: { userID: user_id, invoiceID: invoice_id } },
       {

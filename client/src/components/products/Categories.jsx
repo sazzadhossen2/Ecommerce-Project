@@ -4,7 +4,7 @@ import ProductStore from '../../store/ProductStore'
 
 function Categories() {
   const {CategoryList} =ProductStore();
-  console.log(CategoryList);
+  
   console.log("CategoryList", CategoryList);
   return (
      <div className="section">
@@ -20,7 +20,7 @@ function Categories() {
  <Link to="" className="card h-100 rounded-3 bg-light">
  <div className="card-body">
  <img alt="" className="w-75" src={category.categoryImg} />
- <p className="bodySmal mt-3">{category.className}</p>
+ <p className="bodySmal mt-3">{category.categoryName}</p>
  </div>
  </Link>
  </div>

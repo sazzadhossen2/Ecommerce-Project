@@ -6,6 +6,7 @@ import Features from "../components/products/Features";
 import Products from "../components/products/Products";
 import Slider from "../components/products/Slider";
 import ProductStore from "../store/ProductStore";
+import FeatureStore from "../store/FeatureStore";
 
 function HomePage() {
 
@@ -15,16 +16,20 @@ CategoryListRequest,
 SliderListRequest,
 ListByRemarkRequest,
 
+
+
   } =ProductStore();
 
+const {FeatureListRequest}=FeatureStore();
   useEffect(()=>{
     (async()=>{
       await BrandListRequest();
       await CategoryListRequest();
       await SliderListRequest();
       await ListByRemarkRequest('new');
+      await FeatureListRequest();
     })();
-  },[BrandListRequest, CategoryListRequest, ListByRemarkRequest, SliderListRequest]);
+  },[BrandListRequest, CategoryListRequest, ListByRemarkRequest, SliderListRequest, FeatureListRequest]);
 
 
   return <Layout>
