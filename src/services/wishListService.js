@@ -6,7 +6,7 @@ export const SaveWishListController =async(req)=>{
   
      const user_id = req.headers["user_id"]; 
     const reqBody = req.body;
-    reqBody.userId = user_id; 
+    reqBody.userID = user_id; 
 
     await WishesModel.updateOne(
     reqBody,
@@ -26,7 +26,7 @@ export const RemoveWishListController =async(req)=>{
 
      const user_id = req.headers["user_id"]; 
     const reqBody = req.body;
-    reqBody.userId = user_id; 
+    reqBody.userID = user_id; 
 
     await WishesModel.deleteOne(
     reqBody
@@ -40,89 +40,17 @@ return {status:"false", data:e.toString()}
 
 
 
-// export const WishListController = async (req) => {
-//   try {
-//     const user_id = new mongoose.Types.ObjectId(req.headers["user_id"]);
-
-//     const matchStage = { $match: { userId: user_id } };
-//  console.log(user_id);
-//     const JoinStageProduct = {
-//       $lookup: {
-//         from: "products",
-//         localField: "productId", 
-//         foreignField: "_id",
-//         as: "Product"
-//       }
-//     };
-
-//     const unWindProductStage = { $unwind: "$Product" };
-
-//     const JoinStageBrand = {
-//       $lookup: {
-//         from: "brands",
-//         localField: "Product.brandId",
-//         foreignField: "_id",
-//         as: "brand"
-//       }
-//     };
-
-//     const unWindBrandStage = { $unwind: "$brand" };
-
-//     const JoinStageCategory = {
-//       $lookup: {
-//         from: "categories",
-//         localField: "Product.categoryId", 
-//         foreignField: "_id",
-//         as: "category"
-//       }
-//     };
-
-//     const unWindCategoryStage = { $unwind: "$category" };
-
-//     const projectionStage = {
-//       $project: {
-//         _id: 0,
-//         userId: 0,
-//         createdAt: 0,
-//         updatedAt: 0,
-//         "Product.__v": 0,
-//         "Product.brandId": 0,
-//         "Product.categoryId": 0,
-//         "brand.__v": 0,
-//         "category.__v": 0
-//       }
-//     };
-
-//     const data = await WishesModel.aggregate([
-//       matchStage,
-//       JoinStageProduct,
-//       unWindProductStage,
-//       JoinStageBrand,
-//       unWindBrandStage,
-//       JoinStageCategory,
-//       unWindCategoryStage,
-//       projectionStage
-//     ]);
-
-//     console.log("Aggregated Data:", data);
-//     return { status: "success", data: data };
-//   } catch (e) {
-//     console.error("Wishlist Error:", e);
-//     return { status: "false", data: e.toString() };
-//   }
-// };
-
 
 export const WishListController = async (req) => {
   try {
     const user_id = new mongoose.Types.ObjectId(req.headers["user_id"]);
 
-    const matchStage = { $match: { userId: user_id } };
+    const matchStage = { $match: { userID: user_id } };
 
     const JoinStageProduct = {
       $lookup: {
         from: "products",
-        localField: "productId",
+        localField: "productID",
         foreignField: "_id",
         as: "Product"
       }
@@ -136,7 +64,7 @@ export const WishListController = async (req) => {
     const JoinStageBrand = {
       $lookup: {
         from: "brands",
-        localField: "Product.brandId",
+        localField: "Product.brandID",
         foreignField: "_id",
         as: "brand"
       }
@@ -149,7 +77,7 @@ export const WishListController = async (req) => {
     const JoinStageCategory = {
       $lookup: {
         from: "categories",
-        localField: "Product.categoryId",
+        localField: "Product.categoryID",
         foreignField: "_id",
         as: "category"
       }

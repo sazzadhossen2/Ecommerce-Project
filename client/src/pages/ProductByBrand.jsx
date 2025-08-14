@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout'
 import ProductList from '../components/products/ProductList'
 import ProductStore from '../store/ProductStore';
 import { useParams } from 'react-router-dom';
+// import FeatureStore from '../store/FeatureStore';
 
 function ProductByBrand() {
 
@@ -17,6 +18,7 @@ await ListByBrandRequest(id);
   return <Layout>
 
     <ProductList/>
+  
   </Layout>
 }
 

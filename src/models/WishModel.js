@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 
 const wishesSchema = new mongoose.Schema(
   {
-    userId:{type:mongoose.Schema.Types.ObjectId, required:true},
-    productId:{type:mongoose.Schema.Types.ObjectId, required:true},
+    userID:{type:mongoose.Schema.Types.ObjectId, required:true},
+    productID:{type:mongoose.Schema.Types.ObjectId, required:true},
   
   },
  {

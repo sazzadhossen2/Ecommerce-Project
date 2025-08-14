@@ -4,13 +4,11 @@ import Cookies from 'js-cookie';
 const UserProfile = create((set, get)=>({
 isFormSubmit: false,
 
-// ProfileCookies:()=>{
-//     return !! Cookies.get("token");
-//   },
+
 
  authCfg: () => ({
     withCredentials: true,                             
-    // headers: { token: Cookies.get('token') || '' }  
+  
      headers: { Authorization: `Bearer ${Cookies.get('token') || ''}` }    
   }),
 
@@ -48,28 +46,17 @@ ProfileFormData: {
 
 
 ProfileData:null,
-// ReadProfileRequest:async()=>{
-//   let res =await axios.get('/api/v1/ReadProfile',get().authCfg());
-//   if(res.data['status']==='success'){
-//     set({ProfileData: res.data['data'] })
-//   }
-// },
-
-// src/store/UserProfile.js
-ReadProfileRequest: async () => {
+ReadProfileRequest:async()=>{
   const res = await axios.get('/api/v1/ReadProfile', get().authCfg());
-
-  // accept both {status:"success"} and {status:"Success"}
-  const ok = (res?.data?.status || '').toString().toLowerCase() === 'success';
-  if (!ok) return false;
-
-  // unwrap array payload to a single object
-  const raw = res?.data?.data;
-  const item = Array.isArray(raw) ? (raw[0] || null) : raw;
-
-  set({ ProfileData: item });
-  return true;
+  console.log('ReadProfileResponse:', res.data);
+  if(res.data['status']==='Success'){
+    console.log('ProfileData:', res.data['data']);
+    set({ProfileData: res.data['data'] })
+  }
 },
+
+
+
 
 
 
@@ -77,7 +64,7 @@ CreateProfileRequest:async()=>{
   set({isFormSubmit:true});
   let res =await axios.post('/api/v1/CreateProfile', get().ProfileFormData,get().authCfg());
   set({isFormSubmit:false});
-  return res.data['status'] === 'success' ;
+  return res.data['status'] === 'Success' ;
 },
 
 
@@ -85,7 +72,7 @@ UpdateProfileRequest:async()=>{
   set({isFormSubmit:true});
   let res =await axios.put('/api/v1/UpdateProfile', get().ProfileFormData,get().authCfg());
   set({isFormSubmit:false});
-  return res.data['status'] === 'success' ;
+  return res.data['status'] === 'Success' ;
 }
 
 }))

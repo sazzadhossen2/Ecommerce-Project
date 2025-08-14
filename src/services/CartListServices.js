@@ -7,12 +7,12 @@ export const SaveCartListService = async (req) => {
   try {
     let user_id = req.headers.user_id;
     let reqBody = req.body;
-    reqBody.userId = user_id;
-
+    reqBody.userID = user_id;
+console.log(reqBody);
     await CartModel.create(reqBody);
     return { status: "success", message: "Cart List Create Success" };
   } catch (e) {
-    return { status: "fail", message: "Something Went Wrong!" };
+    return { status: "fail", message: "Something Went Wrong cart!" };
   }
 };
 
@@ -26,10 +26,12 @@ export const UpdateCartListService = async (req) => {
     console.log(reqBody);
 
     await CartModel.updateOne(
-      { _id: cartID, userId: user_id },
+      { _id: cartID, userID: user_id },
       { $set: reqBody }
     );
-    
+    console.log("Cart Update Request Body:", reqBody);
+    console.log("Cart Update User ID:", user_id);
+    console.log("Cart Update ID:", cartID);
     return { status: "success", message: "Cart List Update Success" };
   } catch (e) {
     return { status: "fail", message: "Something Went Wrong !" };
@@ -44,8 +46,9 @@ export const RemoveCartListService = async (req) => {
   try {
     let user_id = req.headers.user_id;
     let reqBody = req.body;
-    reqBody.userId = user_id;
+    reqBody.userID = user_id;
     await CartModel.deleteOne(reqBody);
+    console.log("Cart Remove Request Body:", reqBody);
     return { status: "success", message: "Cart List Remove Success" };
   } catch (e) {
     return { status: "fail", message: "Something Went Wrong !" };
@@ -57,7 +60,7 @@ export const CartListService = async (req) => {
   try {
     const user_id = new mongoose.Types.ObjectId(req.headers.user_id);
 
-    const matchStage = { $match: { userId: user_id } };
+    const matchStage = { $match: { userID: user_id } };
 
     const JoinStageProduct = {
       $lookup: {
@@ -97,7 +100,7 @@ export const CartListService = async (req) => {
 
     const projectionStage = {
       $project: {
-        userId: 0, // ✅ fixed
+        userId: 0, 
         createdAt: 0,
         updatedAt: 0,
         "product._id": 0,

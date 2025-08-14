@@ -131,7 +131,7 @@ function Products() {
                               className="col-md-3 p-2 col-lg-3 col-sm-6 col-12"
                             >
                               <Link
-                                to=""
+                                to={`/product-details/${item._id}`}
                                 className="card shadow-sm h-100 rounded-3 bg-white"
                               >
                                 <img
@@ -190,7 +190,7 @@ function Products() {
                               className="col-md-3 p-2 col-lg-3 col-sm-6 col-12"
                             >
                               <Link
-                                to=""
+                                 to={`/product-details/${item._id}`}
                                 className="card shadow-sm h-100 rounded-3 bg-white"
                               >
                                 <img
@@ -249,7 +249,7 @@ function Products() {
                               className="col-md-3 p-2 col-lg-3 col-sm-6 col-12"
                             >
                               <Link
-                                to=""
+                                 to={`/product-details/${item._id}`}
                                 className="card shadow-sm h-100 rounded-3 bg-white"
                               >
                                 <img
@@ -308,7 +308,7 @@ function Products() {
                               className="col-md-3 p-2 col-lg-3 col-sm-6 col-12"
                             >
                               <Link
-                                to=""
+                                to={`/product-details/${item._id}`}
                                 className="card shadow-sm h-100 rounded-3 bg-white"
                               >
                                 <img
@@ -367,7 +367,7 @@ function Products() {
                               className="col-md-3 p-2 col-lg-3 col-sm-6 col-12"
                             >
                               <Link
-                                to=""
+                                to={`/product-details/${item._id}`}
                                 className="card shadow-sm h-100 rounded-3 bg-white"
                               >
                                 <img
