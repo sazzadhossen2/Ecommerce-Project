@@ -7,8 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/': {
-        // target: 'https://ecommerce-project-efq3.onrender.com',
-        target: 'http://localhost:8080',
+       
+         target: 'https://ecommerce-project-efq3.onrender.com',
+        changeOrigin: true, 
+        secure: true
         
   }}}    
 });

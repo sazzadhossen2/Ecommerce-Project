@@ -65,7 +65,7 @@ export const CartListService = async (req) => {
     const JoinStageProduct = {
       $lookup: {
         from: "products",
-        localField: "productId",
+        localField: "productID",
         foreignField: "_id",
         as: "product",
       },
@@ -77,7 +77,7 @@ export const CartListService = async (req) => {
     const JoinStageBrand = {
       $lookup: {
         from: "brands",
-        localField: "product.brandId",
+        localField: "product.brandID",
         foreignField: "_id",
         as: "brand",
       },
@@ -89,7 +89,7 @@ export const CartListService = async (req) => {
     const JoinStageCategory = {
       $lookup: {
         from: "categories",
-        localField: "product.categoryId",
+        localField: "product.categoryID",
         foreignField: "_id",
         as: "category",
       },
@@ -121,7 +121,7 @@ export const CartListService = async (req) => {
       unwindCategoryStage,
       projectionStage,
     ]);
-
+// console.log()
     return { status: "success", data };
   } catch (e) {
     return { status: "fail", message: e.message || "Something Went Wrong!" };
