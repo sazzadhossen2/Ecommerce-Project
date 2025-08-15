@@ -1,47 +1,48 @@
+// src/components/cart/CartesDetails.jsx
 import { useEffect, useMemo } from "react";
-import CartStore from "../../store/CartStore";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import CartStore from "../../store/CartStore";
+
 export default function CartesDetails() {
   const navigate = useNavigate();
 
-  const onCheckout = () => {
-  // if you want to do anything first (validate totals, etc.), do it here
-  navigate("/payment");
-};
   const {
     isFormSubmit,
     cartListData,
     CartListRequest,
     CartRemoveCartListRequest,
     CartUpdateCartListRequest,
+    // this should update CartFormDataUpdate.qty inside the store
     setCartQty,
   } = CartStore();
 
-  // Load cart on mount
+  // 1) Load cart on mount
   useEffect(() => {
     (async () => {
       await CartListRequest();
     })();
   }, [CartListRequest]);
 
-  // Totals
+  // 2) Money math (unit price respects discount)
   const { total, vat, payable } = useMemo(() => {
     if (!Array.isArray(cartListData)) return { total: 0, vat: 0, payable: 0 };
-    const t = cartListData.reduce((acc, item) => {
+
+    const t = cartListData.reduce((sum, item) => {
       const unit = Number(
         item?.product?.discount ? item?.product?.discountPrice : item?.product?.price
       ) || 0;
       const q = Number(item?.qty) || 0;
-      return acc + unit * q;
+      return sum + unit * q;
     }, 0);
+
     const v = +(t * 0.05).toFixed(2);
     return { total: +t.toFixed(2), vat: v, payable: +(t + v).toFixed(2) };
   }, [cartListData]);
 
-  // Remove
+  // 3) Remove line
   const remove = async (cartId) => {
-    const ok = await CartRemoveCartListRequest({ _id: cartId });
+    const ok = await CartRemoveCartListRequest(cartId); // pass id only
     if (ok) {
       toast.success("Removed from cart");
       await CartListRequest();
@@ -50,10 +51,10 @@ export default function CartesDetails() {
     }
   };
 
-  // Qty stepper
+  // 4) Change qty (+/-)
   const changeQty = async (item, delta) => {
     const next = Math.max(1, (Number(item.qty) || 1) + delta);
-    setCartQty(next);
+    setCartQty(next); // primes CartFormDataUpdate.qty in store
     const ok = await CartUpdateCartListRequest(item._id);
     if (ok) {
       await CartListRequest();
@@ -62,6 +63,13 @@ export default function CartesDetails() {
     }
   };
 
+  // 5) Go to payment
+  const onCheckout = () => {
+    if (!payable) return toast.error("Your cart is empty");
+    navigate("/payment");
+  };
+
+  // Loading / empty states
   if (!cartListData) {
     return (
       <div className="container mt-3">
@@ -111,10 +119,12 @@ export default function CartesDetails() {
                       <div className="me-auto">
                         <p className="fw-semibold m-0">{item?.product?.title || "-"}</p>
                         <p className="text-muted my-1">
-                          Unit Price: ${unit}, Qty: {qty}, Size: {item?.size || "-"}, Color: {item?.color || "-"}
+                          Unit Price: ${unit}, Qty: {qty}, Size: {item?.size || "-"}, Color:{" "}
+                          {item?.color || "-"}
                         </p>
                         <p className="h6 fw-bold m-0 text-dark">Total ${lineTotal}</p>
 
+                        {/* Qty stepper */}
                         <div className="input-group input-group-sm mt-2" style={{ maxWidth: 160 }}>
                           <button
                             className="btn btn-outline-secondary"
@@ -169,20 +179,10 @@ export default function CartesDetails() {
                   <span className="float-end">
                     <button
                       className="btn px-5 mt-2 btn-success"
-                      // disabled={isFormSubmit || payable === 0}
-                       onClick={onCheckout}
-                      // onClick={() => {
-                      //   // wire to your CreateInvoiceRequest when ready
-                      //   // await CreateInvoiceRequest()
-                      //   // await CartListRequest()
-                      //   // navigate('/checkout') ...
-                      //   alert("Proceeding to checkout…");
-                      // }}
+                      onClick={onCheckout}
+                      disabled={isFormSubmit || payable === 0}
                     >
-                      
                       Check Out
-                    
-                      
                     </button>
                   </span>
                 </li>
