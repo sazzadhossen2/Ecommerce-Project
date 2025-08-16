@@ -1,6 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import Cookies from 'js-cookie';
+const BasUrl="https://ecommerce-project-efq3.onrender.com";
 const WishListStore = create((set, get) => ({
   isFormSubmit: false,
 
@@ -13,7 +14,7 @@ const WishListStore = create((set, get) => ({
     productID: "",
   },
 
-
+ 
   WishFormChange: (name, value) => {
     set((state) => ({
       WishListFormData: {
@@ -26,7 +27,7 @@ const WishListStore = create((set, get) => ({
 
   wishListData: null,
   WishListRequest: async () => {
-    const res = await axios.get('/api/v1/WishList', get().authCfg());
+    const res = await axios.get(`${BasUrl}/api/v1/WishList`, get().authCfg());
     if (res.data['status'] === 'success') {
       set({ wishListData: res.data['data'] });
     }
@@ -35,7 +36,7 @@ const WishListStore = create((set, get) => ({
 
 SaveWishListRequest:async()=>{
   set({isFormSubmit:true});
-  let res =await axios.post('/api/v1/SaveWishList', get().WishListFormData,get().authCfg());
+  let res =await axios.post(`${BasUrl}/api/v1/SaveWishList`, get().WishListFormData,get().authCfg());
   set({isFormSubmit:false});
   return res.data['status'] === 'Success' ;
 },
@@ -52,7 +53,7 @@ SaveWishListRequest:async()=>{
 
 RemoveWishListRequest: async () => {
   set({ isFormSubmit: true });
-  let res = await axios.delete('/api/v1/RemoveWishList', {
+  let res = await axios.delete(`${BasUrl}/api/v1/RemoveWishList`, {
     ...get().authCfg(),
     data: get().WishListFormData
   });

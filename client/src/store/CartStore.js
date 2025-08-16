@@ -74,7 +74,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import Cookies from "js-cookie";
-
+const BasUrl="https://ecommerce-project-efq3.onrender.com";
 const CartStore = create((set, get) => ({
   isFormSubmit: false,
 
@@ -118,7 +118,7 @@ const CartStore = create((set, get) => ({
 
   // GET /CartList
   CartListRequest: async () => {
-    const res = await axios.get("/api/v1/CartList", get().authCfg());
+    const res = await axios.get(`${BasUrl}/api/v1/CartList`, get().authCfg());
     if (res.data.status === "success") {
       set({ cartListData: res.data.data });
     }
@@ -128,7 +128,7 @@ const CartStore = create((set, get) => ({
   CreateCartRequest: async () => {
     set({ isFormSubmit: true });
     const res = await axios.post(
-      "/api/v1/SaveCartList",
+      `${BasUrl}/api/v1/SaveCartList`,
       get().CartFormData,
       get().authCfg()
     );
@@ -142,7 +142,7 @@ const CartStore = create((set, get) => ({
   CartUpdateCartListRequest: async (cartID) => {
     set({ isFormSubmit: true });
     const res = await axios.post(
-      `/api/v1/UpdateCartList/${cartID}`,
+      `${BasUrl}/api/v1/UpdateCartList/${cartID}`,
       get().CartFormDataUpdate,
       get().authCfg()
     );
@@ -154,7 +154,7 @@ const CartStore = create((set, get) => ({
   CartRemoveCartListRequest: async (cartID) => {
     set({ isFormSubmit: true });
     const res = await axios.post(
-      `/api/v1/RemoveCartList`,
+      `${BasUrl}/api/v1/RemoveCartList`,
       { _id: cartID },
       get().authCfg()
     );

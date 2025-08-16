@@ -11,6 +11,9 @@ export default defineConfig({
          target: 'https://ecommerce-project-efq3.onrender.com',
         changeOrigin: true, 
         secure: true
+        // target:"http://localhost:8080",
+
+
         
   }}}    
 });

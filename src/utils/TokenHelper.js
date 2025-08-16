@@ -18,5 +18,4 @@ export const DecodeToken =(token)=>{
 return null;
   }
 }
-console.log("EncodeToken Token:", EncodeToken);
-console.log("Decoded Token:", DecodeToken);
+

@@ -4,7 +4,7 @@ import ProductStore from '../../store/ProductStore';
 
 function Brands() {
   const {BrandList}=ProductStore();
-  console.log(BrandList);
+
   return (
     <div className="section">
       <div className="container">
