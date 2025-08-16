@@ -24,7 +24,7 @@ const ProductStore =create((set)=>(
 
    SliderList:null,
     SliderListRequest:async()=>{
-      let res =await axios.get(`${BasUrl}/api/v1/productSliderLis`);
+      let res =await axios.get(`${BasUrl}/api/v1/productSliderList`);
       if(res.data['message'] === 'success'){
         set({SliderList:res.data['data']});  
     }
