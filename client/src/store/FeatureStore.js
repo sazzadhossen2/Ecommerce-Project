@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { create } from "zustand";
-const BasUrl="https://ecommerce-project-efq3.onrender.com";
+import { BasUrl } from '../utility/utility';
+// const BasUrl="https://ecommerce-project-efq3.onrender.com";
 const FeatureStore =create((set)=>(
   {
     FeatureList:null,

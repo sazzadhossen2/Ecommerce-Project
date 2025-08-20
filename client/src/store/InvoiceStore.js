@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { create } from "zustand";
 import Cookies from 'js-cookie';
-const BasUrl="https://ecommerce-project-efq3.onrender.com";
+import { BasUrl } from '../utility/utility';
+// const BasUrl="https://ecommerce-project-efq3.onrender.com";
 const InvoiceStore =create((set,get)=>(
   {
  
