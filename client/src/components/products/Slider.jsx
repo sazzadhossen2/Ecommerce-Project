@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 
 function Slider() {
   const {SliderList} = ProductStore();
-  console.log(SliderList);
+
   if(SliderList===null) return <SliderSkeleton/>
+  
   return (
     <div>
       <div

@@ -9,10 +9,16 @@ function NavBar() {
   const {isLogin,UserLogoutRequest}=UserStore()
   const {cartAbilable}=CartStore();
   const onLogout=async()=>{
- await UserLogoutRequest();
- sessionStorage.clear();
+const res= await UserLogoutRequest();
+if(res === true) {
+sessionStorage.clear();
  localStorage.clear();
   window.location.href="/";
+   console.log("Success");
+}else{
+  console.log("Not");
+}
+ 
   }
   return (
     <>

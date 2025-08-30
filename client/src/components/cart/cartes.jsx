@@ -42,7 +42,7 @@ export default function CartesDetails() {
 
   // 3) Remove line
   const remove = async (cartId) => {
-    const ok = await CartRemoveCartListRequest(cartId); // pass id only
+    const ok = await CartRemoveCartListRequest(cartId); 
     if (ok) {
       toast.success("Removed from cart");
       await CartListRequest();

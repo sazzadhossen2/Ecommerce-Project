@@ -22,6 +22,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
 
+const isProd = process.env.NODE_ENV === 'production';
+const allowedOrigin = isProd ? 'https://client-vswn.onrender.com' : 'http://localhost:5173';
 
 
 var img = "bjdbsjdbjsbndbndjksnbdkjsbnk dnskjksdn kndkjsdn"
@@ -40,6 +42,13 @@ app.use(helmet(
 ));
 app.use(mongoSanitize());
 app.use(cors());
+// app.use(cors({
+//   origin: allowedOrigin,  
+//   credentials: true,      
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
+//   allowedHeaders: ['Content-Type', 'Authorization'],    
+// }));
+
 // app.use(xss());
 app.use(hpp())
 
@@ -50,10 +59,10 @@ app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 
 // Rate Limiting
 const limit = rateLimit({
-  
-  windowMs: 15 *60*1000,
-  max: 100, // Limit each IP to 100 requests per windowMs
-})
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // 100 requests per windowMs
+});
+
 app.use(limit);
 
 

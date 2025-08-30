@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { create } from 'zustand';
 import Cookies from 'js-cookie';
-import { getEmail, setEmail } from "../utility/utility.js";
+import { BasUrl, getEmail, setEmail } from "../utility/utility.js";
  const UserStore = create((set)=>({
 
   isLogin:()=>{
@@ -21,7 +21,8 @@ LoginFormData:{
 
 UserOTPRequest:async(email)=>{
   set({isFormSubmit:true});
-  let res =await axios.get(`/api/v1/UserOTP/${email}`);
+  let res =await axios.get(`${BasUrl}/api/v1/UserOTP/${email}`);
+  //  let res =await axios.get(`/api/v1/UserOTP/${email}`);
   setEmail(email);
   set({isFormSubmit:false});
   return res.data["status"]=== "Success";
@@ -40,14 +41,17 @@ OTPFormONChange:(name,value)=>{
 VerifyLoginRequest:async(otp)=>{
   set({isFormSubmit:true});
   let email =getEmail();
-  let res =await axios.get(`/api/v1/VerifyLogin/${email}/${otp}`);
+  let res =await axios.get(`${BasUrl}/api/v1/VerifyLogin/${email}/${otp}`);
+    // let res =await axios.get(`/api/v1/VerifyLogin/${email}/${otp}`);
   set({isFormSubmit:false});
+  console.log(res)
+  Cookies.set("token",res.data.token)
   return res.data["status"]=== "Success";
 },
 
 UserLogoutRequest:async()=>{
   set({isFormSubmit:true});
-  let res =await axios.get(`/api/v1/UserLogout`);
+  let res =await axios.get(`${BasUrl}/api/v1/UserLogout`);
 
   set({isFormSubmit:false});
   return res.data["status"]=== "success";
