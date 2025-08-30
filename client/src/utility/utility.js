@@ -1,111 +1,31 @@
-// import Swal from "sweetalert2";
-
-// export function unauthorized(code){
-//     if(code===401){
-//         sessionStorage.clear();
-//         localStorage.clear();
-//         window.location.href="/login"
-//     }
-// }
-
-// export const BasUrl="https://ecommerce-project-efq3.onrender.com";
-// // export const BasUrl="http://localhost:8080";
-
-// export function setEmail(email){
-//     sessionStorage.setItem("email",email)
-// }
-
-// export function getEmail(){
-//   return sessionStorage.getItem("email")
-// }
-
-// export  function TimestampToDate(timestamp) {
-//     let date = new Date(timestamp);
-//     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-//     return date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
-// }
-
-// export async  function DeleteAlert() {
-//     const result = await Swal.fire({
-//         title: "Are you sure?",
-//         text: "You won't be able to revert this!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Yes, delete it!",
-//         allowOutsideClick: false
-//     });
-//     return result.isConfirmed;
-// }
-
-// export async  function SuccessAlert(msg) {
-//     const result = await Swal.fire({
-//         text: msg,
-//         icon: "success",
-//         confirmButtonColor: "#198754",
-//         confirmButtonText: "OK",
-//         allowOutsideClick: false
-//     });
-//     return result.isConfirmed;
-// }
-
-// export async  function FailAlert(msg) {
-//     const result = await Swal.fire({
-//         text: msg,
-//         icon: "warning",
-//         confirmButtonColor: "#fcac3f",
-//         confirmButtonText: "Try Again",
-//         allowOutsideClick: false
-//     });
-//     return result.isConfirmed;
-// }
-
-// export async  function InfoAlert(msg) {
-//     const result = await Swal.fire({
-//         text: msg,
-//         icon: "info",
-//         confirmButtonColor: "#198754",
-//         confirmButtonText: "Go Ahead",
-//         allowOutsideClick: false
-//     });
-//     return result.isConfirmed;
-// }
-
-
 import Swal from "sweetalert2";
 
-// Check environment and set the base URL accordingly
-const isProd = window.location.hostname !== 'localhost';
-export const BasUrl = isProd ? 'https://ecommerce-project-efq3.onrender.com' : 'http://localhost:8080';
-
-// Unauthorized handler
 export function unauthorized(code){
-    if(code === 401){
+    if(code===401){
         sessionStorage.clear();
         localStorage.clear();
-        window.location.href = "/login";
+        window.location.href="/login"
     }
 }
 
-// Set and get email from session storage
+export const BasUrl="https://ecommerce-project-efq3.onrender.com";
+// export const BasUrl="http://localhost:8080";
+
 export function setEmail(email){
-    sessionStorage.setItem("email", email);
+    sessionStorage.setItem("email",email)
 }
 
 export function getEmail(){
-  return sessionStorage.getItem("email");
+  return sessionStorage.getItem("email")
 }
 
-// Convert timestamp to readable date format
-export function TimestampToDate(timestamp) {
+export  function TimestampToDate(timestamp) {
     let date = new Date(timestamp);
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+    return date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
 }
 
-// Alert functions for different actions
-export async function DeleteAlert() {
+export async  function DeleteAlert() {
     const result = await Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -119,7 +39,7 @@ export async function DeleteAlert() {
     return result.isConfirmed;
 }
 
-export async function SuccessAlert(msg) {
+export async  function SuccessAlert(msg) {
     const result = await Swal.fire({
         text: msg,
         icon: "success",
@@ -130,7 +50,7 @@ export async function SuccessAlert(msg) {
     return result.isConfirmed;
 }
 
-export async function FailAlert(msg) {
+export async  function FailAlert(msg) {
     const result = await Swal.fire({
         text: msg,
         icon: "warning",
@@ -141,7 +61,7 @@ export async function FailAlert(msg) {
     return result.isConfirmed;
 }
 
-export async function InfoAlert(msg) {
+export async  function InfoAlert(msg) {
     const result = await Swal.fire({
         text: msg,
         icon: "info",

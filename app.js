@@ -41,16 +41,13 @@ app.use(helmet(
   }})
 ));
 app.use(mongoSanitize());
+app.use(cors());
 // app.use(cors({
-//   origin: "http://localhost:5173" ,// Allow your frontend to access the backend
-//   credentials: true
+//   origin: allowedOrigin,  
+//   credentials: true,      
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
+//   allowedHeaders: ['Content-Type', 'Authorization'],    
 // }));
-app.use(cors({
-  origin: allowedOrigin,  
-  credentials: true,      
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
-  allowedHeaders: ['Content-Type', 'Authorization'],    
-}));
 
 // app.use(xss());
 app.use(hpp())
