@@ -8,8 +8,8 @@ export function unauthorized(code){
     }
 }
 
-export const BasUrl="https://ecommerce-project-efq3.onrender.com";
-// export const BasUrl="http://localhost:8080";
+// export const BasUrl="https://ecommerce-project-efq3.onrender.com";
+export const BasUrl="http://localhost:8080";
 
 export function setEmail(email){
     sessionStorage.setItem("email",email)

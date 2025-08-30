@@ -17,6 +17,7 @@ import router from "./src/routes/api.js";
 import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { corsMiddleware } from "./src/utils/cors_middle.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -41,7 +42,7 @@ app.use(helmet(
   }})
 ));
 app.use(mongoSanitize());
-app.use(cors());
+app.use(corsMiddleware);
 // app.use(cors({
 //   origin: allowedOrigin,  
 //   credentials: true,      
